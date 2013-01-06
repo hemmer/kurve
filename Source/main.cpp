@@ -1,6 +1,5 @@
 // SDL headers
 #include "SDL/SDL.h"
-#include "SDL_image/SDL_image.h"
 #include "SDL_ttf/SDL_ttf.h"
 
 // project headers
@@ -27,23 +26,22 @@ SDL_Color dot2col = { 0, 200, 0 };
 
 
 //The surfaces
-SDL_Surface *dot = NULL;
 SDL_Surface *message = NULL;
 SDL_Surface *screen = NULL;
+SDL_Surface *playAreaSurface = NULL;
 
 //The event structure
 SDL_Event event;
 
 // TODO neaten this!
-SDL_Rect playArea = {static_cast<Sint16>(PADDING), static_cast<Sint16>(PADDING),
-    static_cast<Uint16>(SCREEN_WIDTH - 3*PADDING - SIDEBAR_WIDTH),
-    static_cast<Uint16>(SCREEN_HEIGHT - 2*PADDING)};
+SDL_Rect playAreaGlobal = {static_cast<Sint16>(PADDING), static_cast<Sint16>(PADDING),
+                           static_cast<Uint16>(SCREEN_WIDTH - 3*PADDING - SIDEBAR_WIDTH),
+                           static_cast<Uint16>(SCREEN_HEIGHT - 2*PADDING)};
 
-SDL_Rect sideBarArea = {static_cast<Sint16>(playArea.x + playArea.w + PADDING), static_cast<Sint16>(PADDING),
-    static_cast<Uint16>(SIDEBAR_WIDTH),
-    static_cast<Uint16>(playArea.h)};
+SDL_Rect playArea = {0 ,0, playAreaGlobal.w, playAreaGlobal.h};
 
-
+SDL_Rect sideBarArea = {static_cast<Sint16>(playAreaGlobal.x + playAreaGlobal.w + PADDING), static_cast<Sint16>(PADDING),
+                        static_cast<Uint16>(SIDEBAR_WIDTH), static_cast<Uint16>(playArea.h)};
 
 
 
@@ -55,7 +53,6 @@ int main( int argc, char* args[] )
     //The frame rate regulator
     Timer fps;
     
-
 
     //Initialize
     if( init() == false )
@@ -69,14 +66,23 @@ int main( int argc, char* args[] )
     {
         return 1;
     }
-
-    //The dot that will be used
-    Kurve myKurve(SDLK_LEFT, SDLK_RIGHT, dot1col);
-    //Dot myDot2(SDLK_a, SDLK_s, dot2col);
-
-    SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
     
-    SDL_FillRect( screen, &playArea, SDL_MapRGB( screen->format, backgroundColour.r, backgroundColour.g, backgroundColour.b ) );
+    const int numPlayers = 2;
+    
+    // lines for each player
+    Kurve myKurve[numPlayers];
+    
+    myKurve[0].setKeys(SDLK_LEFT, SDLK_RIGHT);
+    myKurve[0].setColour(dot1col);
+
+    myKurve[1].setKeys(SDLK_a, SDLK_s);
+    myKurve[1].setColour(dot2col);
+
+    // fill the whole screen white
+    SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+        
+    SDL_FillRect( playAreaSurface, &playArea,
+                 SDL_MapRGB( playAreaSurface->format, backgroundColour.r, backgroundColour.g, backgroundColour.b ) );
         
     //While the user hasn't quit
     while( quit == false )
@@ -95,47 +101,43 @@ int main( int argc, char* args[] )
             }
         }
         
-        //Handle events for the dot
-        myKurve.handle_input();
-        //myDot2.handle_input();
+        // handle input events for each line
+        for (int k = 0; k < numPlayers; ++k)
+            myKurve[k].handle_input();
 
+        // move each line in the direction it is facing
+        for (int k = 0; k < numPlayers; ++k)
+            myKurve[k].move();
         
-        //Move the dot
-        myKurve.move();
-        //myDot2.move();
+        // check for collisions with other lines
+        for (int k = 0; k < numPlayers; ++k)
+            myKurve[k].checkCollision();
         
-        myKurve.checkCollision();
-        //myDot2.checkCollision();
         
-        //Fill the screen white
+        
+        // BACKGROUND: fill the screen white
         SDL_FillRect( screen, &sideBarArea, SDL_MapRGB( screen->format, 0, 0, 0 ) );
         
-        //Show the dot on the screen
-        myKurve.show();
-        //myDot2.show();
+        // redner each line on the screen
+        for (int k = 0; k < numPlayers; ++k)
+            myKurve[k].show();
         
-        //The timer's time as a string
-        std::stringstream time;
         
-        //Convert the timer's time to a string
-        time << "x, y: " << myKurve.x << " " << myKurve.y;
-        //time << "xvel, yvel: " << myDot.xVel << " " << myDot.yVel;
-        //time << "xacc, yacc: " << myDot.xAcc << " " << myDot.yAcc;
-        //time << "ticks" << SDL_GetTicks();
-        message = TTF_RenderText_Solid( font, time.str().c_str(), textColor );
+        // draw the playing surface onto the screen
+        apply_surface(playAreaGlobal.x, playAreaGlobal.y, playAreaSurface, screen);
         
-        if (message == NULL)
-        {
-            return 1;
-        }
-                
-        apply_surface(playArea.x + playArea.w + PADDING, PADDING, message, screen);
+        
+        std::stringstream position;
+        //Convert the position time to a string
+        position << "x, y: " << myKurve[0].x << " " << myKurve[0].y;
+        message = TTF_RenderText_Solid( font, position.str().c_str(), textColor );
+        if (message == NULL) return 1;
+    
+        
+        apply_surface(playAreaGlobal.x + playAreaGlobal.w + PADDING, PADDING, message, screen);
         
         //Update the screen
-        if( SDL_Flip( screen ) == -1 )
-        {
-            return 1;
-        }
+        if( SDL_Flip( screen ) == -1 ) return 1;
         
         //Cap the frame rate
         if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND )

@@ -11,18 +11,17 @@
 #include "functions.h"
 #include "globals.h"
 
-
 #include "SDL/SDL.h"
-#include "SDL_image/SDL_image.h"
 
 #include <cmath>
 #include <sstream>
 
 Kurve::Kurve(int left, int right, SDL_Color lineCol)
 {
-    //Initialize the offsets
-    x = 50;
-    y = 50;
+    // randomly initialize the starting position
+    x = randomRange(0, playArea.w);
+    y = randomRange(0, playArea.h);
+
     
     speed = 2.0;
     
@@ -33,7 +32,7 @@ Kurve::Kurve(int left, int right, SDL_Color lineCol)
     leftKeycode = left;
     rightKeycode = right;
     
-    lineColour = SDL_MapRGB(screen->format, lineCol.r, lineCol.g, lineCol.b);
+    lineColour = SDL_MapRGB(playAreaSurface->format, lineCol.r, lineCol.g, lineCol.b);
 
     alive = true;
 }
@@ -66,8 +65,8 @@ void Kurve::handle_input()
     if (keystates[SDLK_r] && !alive)
     {
         // start off in a new position
-        x = randomRange(playArea.x, playArea.x + playArea.w);
-        y = randomRange(playArea.y, playArea.y + playArea.h);
+        x = randomRange(0, playArea.w);
+        y = randomRange(0, playArea.h);
         
         // pointing in a new direction
         double newAngle = randomFloat() * 2.0 * M_PI;
@@ -87,25 +86,32 @@ void Kurve::move()
     
     //Move the dot up or down
     y += yVel;
+    
+    
+    // apply periodic boundary conditions
+    if ( x < 0 ) x += playArea.w;
+    else if ( x > playArea.w) x -= playArea.w;
+    
+    if (y < 0 ) y += playArea.h;
+    else if ( y > playArea.h) y -= playArea.h;
+
 }
 
-void 
-
-Kurve::checkCollision()
+void Kurve::checkCollision()
 {
     // find where we will be at the next timestep
     double newX = x + 2*xVel;
     double newY = y + 2*yVel;
 
     // TODO: need proper error checking here
-    Uint32 pixel = get_pixel32(screen, pmod(newX, SCREEN_WIDTH), pmod(newY, SCREEN_HEIGHT));
+    Uint32 pixel = get_pixel32(playAreaSurface, pmod(newX, playArea.w), pmod(newY, playArea.h));
     
     // check if the dot went too far to the left or right (and kill it if so)
-    if (( x < playArea.x ) || ( x > playArea.w + playArea.x )) alive = false;
-    if (( y < playArea.y ) || ( y > playArea.h + playArea.y )) alive = false;
-        
+    //    if (( x < 0 ) || ( x > playArea.w)) alive = false;
+    //    if (( y < 0 ) || ( y > playArea.h)) alive = false;
     
-    if (pixel != SDL_MapRGB( screen->format, backgroundColour.r, backgroundColour.g, backgroundColour.b ))
+    
+    if (pixel != SDL_MapRGB( playAreaSurface->format, backgroundColour.r, backgroundColour.g, backgroundColour.b ))
     {
         alive = false;
         xVel = yVel = 0.0;
@@ -120,5 +126,17 @@ void Kurve::show()
     // colour a 3x3 pixel area
     for (int i = midX-1; i <= midX+1; ++i)
         for (int j = midY-1; j <= midY+1; ++j)
-            put_pixel32(screen, pmod(i, SCREEN_WIDTH), pmod(j, SCREEN_HEIGHT), lineColour);
+            put_pixel32(playAreaSurface, pmod(i, playArea.w), pmod(j, playArea.h), lineColour);
 }
+
+void Kurve::setKeys(int leftKey, int rightKey)
+{
+    leftKeycode = leftKey;
+    rightKeycode = rightKey;
+}
+
+void Kurve::setColour(SDL_Color newColour)
+{
+    lineColour = SDL_MapRGB(playAreaSurface->format, newColour.r, newColour.g, newColour.b);
+}
+

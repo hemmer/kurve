@@ -15,9 +15,9 @@
 
 
 //The surfaces
-extern SDL_Surface *dot;
 extern SDL_Surface *screen;
 extern SDL_Surface *message;
+extern SDL_Surface *playAreaSurface;
 
 extern SDL_Color backgroundColour;
 
@@ -30,7 +30,7 @@ extern TTF_Font *font;
 //File stream for the game log.
 extern std::ofstream logger;
 
-extern SDL_Rect playArea;
+extern SDL_Rect playAreaGlobal, playArea;
 extern SDL_Rect sideBarArea;
 
 #endif

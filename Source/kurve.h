@@ -33,7 +33,7 @@ public:
     double xVel, yVel;
     
     //Initializes the variables
-    Kurve(int, int, SDL_Color);
+    Kurve(int leftBtn = SDLK_LEFT, int rightBtn = SDLK_RIGHT, SDL_Color col = {0, 0, 0});
     
     //Takes key presses and adjusts the dot's velocity
     void handle_input();
@@ -43,6 +43,9 @@ public:
     
     void checkCollision();
     bool isAlive() { return alive; }
+    
+    void setKeys(int leftKey, int rightKey);
+    void setColour(SDL_Color newColour);
     
     //Shows the dot on the screen
     void show();

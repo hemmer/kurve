@@ -24,6 +24,8 @@ private:
     int leftKeycode, rightKeycode;
     
     Uint32 lineColour;
+    
+    
 public:
     
     //The X and Y offsets of the dot
@@ -49,6 +51,9 @@ public:
     
     //Shows the dot on the screen
     void show();
+    
+    void restart();
+
 };
 
 #endif /* defined(__SDLTest__Dot__) */

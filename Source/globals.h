@@ -25,7 +25,9 @@ extern SDL_Color backgroundColour;
 extern SDL_Event event;
 
 //The font that's going to be used
-extern TTF_Font *font;
+extern TTF_Font *font10;
+extern TTF_Font *font20;
+extern TTF_Font *font32;
 
 //File stream for the game log.
 extern std::ofstream logger;

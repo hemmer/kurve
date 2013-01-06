@@ -18,23 +18,15 @@
 
 Kurve::Kurve(int left, int right, SDL_Color lineCol)
 {
-    // randomly initialize the starting position
-    x = randomRange(0, playArea.w);
-    y = randomRange(0, playArea.h);
-
     
     speed = 2.0;
-    
-    //Initialize the velocity
-    xVel = speed;
-    yVel = 0.0;
     
     leftKeycode = left;
     rightKeycode = right;
     
     lineColour = SDL_MapRGB(playAreaSurface->format, lineCol.r, lineCol.g, lineCol.b);
 
-    alive = true;
+    restart();
 }
 
 void Kurve::handle_input()
@@ -64,16 +56,7 @@ void Kurve::handle_input()
     
     if (keystates[SDLK_r] && !alive)
     {
-        // start off in a new position
-        x = randomRange(0, playArea.w);
-        y = randomRange(0, playArea.h);
-        
-        // pointing in a new direction
-        double newAngle = randomFloat() * 2.0 * M_PI;
-        xVel = speed * cos(newAngle);
-        yVel = speed * sin(newAngle);
-        
-        alive = true;
+        restart();
     }
 }
 
@@ -95,6 +78,20 @@ void Kurve::move()
     if (y < 0 ) y += playArea.h;
     else if ( y > playArea.h) y -= playArea.h;
 
+}
+
+void Kurve::restart()
+{
+    // start off in a new position
+    x = randomRange(0, playArea.w);
+    y = randomRange(0, playArea.h);
+    
+    // pointing in a new direction
+    double newAngle = randomFloat() * 2.0 * M_PI;
+    xVel = speed * cos(newAngle);
+    yVel = speed * sin(newAngle);
+    
+    alive = true;
 }
 
 void Kurve::checkCollision()

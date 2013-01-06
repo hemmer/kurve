@@ -120,12 +120,12 @@ bool init()
 bool load_files()
 {
     //Open the font
-    font = TTF_OpenFont( "visitor1.ttf", 10 );
+    font10 = TTF_OpenFont( "visitor1.ttf", 10 );
+    font20 = TTF_OpenFont( "visitor1.ttf", 20 );
+    font32 = TTF_OpenFont( "visitor1.ttf", 32 );
     
-    if (font == NULL)
-    {
-        return false;
-    }
+    if (font10 == NULL || font20 == NULL || font32 == NULL) return false;
+
     
     //If everything loaded fine
     return true;
@@ -137,8 +137,10 @@ void clean_up()
     SDL_FreeSurface( playAreaSurface );
     SDL_FreeSurface( message );
     
-    //Close the font that was used
-    TTF_CloseFont( font );
+    // close the font that was used
+    TTF_CloseFont( font10 );
+    TTF_CloseFont( font20 );
+    TTF_CloseFont( font32 );
     
     TTF_Quit();
     SDL_Quit();

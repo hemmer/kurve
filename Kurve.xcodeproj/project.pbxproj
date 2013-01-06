@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3412F791698F91900F22FFA /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3412F6F1698F91900F22FFA /* functions.cpp */; };
+		D3412F7A1698F91900F22FFA /* kurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3412F721698F91900F22FFA /* kurve.cpp */; };
+		D3412F7B1698F91900F22FFA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3412F741698F91900F22FFA /* main.cpp */; };
+		D3412F7C1698F91900F22FFA /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D3412F761698F91900F22FFA /* SDLMain.m */; };
+		D3412F7D1698F91900F22FFA /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3412F771698F91900F22FFA /* timer.cpp */; };
+		D3E88256168CBD69004C70BE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E88255168CBD69004C70BE /* SDL.framework */; };
+		D3E8825B168CC586004C70BE /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E8825A168CC586004C70BE /* SDL_image.framework */; };
+		D3E8825D1694C3EA004C70BE /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E8825C1694C3EA004C70BE /* SDL_ttf.framework */; };
+		D3F70857168CAFC400F7C248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F70856168CAFC400F7C248 /* Foundation.framework */; };
+		D3F70859168CAFEA00F7C248 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F70858168CAFEA00F7C248 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3F70842168CAE3200F7C248 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D3412F6E1698F91900F22FFA /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constants.h; path = Source/constants.h; sourceTree = SOURCE_ROOT; };
+		D3412F6F1698F91900F22FFA /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = functions.cpp; path = Source/functions.cpp; sourceTree = SOURCE_ROOT; };
+		D3412F701698F91900F22FFA /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = functions.h; path = Source/functions.h; sourceTree = SOURCE_ROOT; };
+		D3412F711698F91900F22FFA /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = globals.h; path = Source/globals.h; sourceTree = SOURCE_ROOT; };
+		D3412F721698F91900F22FFA /* kurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = kurve.cpp; path = Source/kurve.cpp; sourceTree = SOURCE_ROOT; };
+		D3412F731698F91900F22FFA /* kurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kurve.h; path = Source/kurve.h; sourceTree = SOURCE_ROOT; };
+		D3412F741698F91900F22FFA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = SOURCE_ROOT; };
+		D3412F751698F91900F22FFA /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = Source/SDLMain.h; sourceTree = SOURCE_ROOT; };
+		D3412F761698F91900F22FFA /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = Source/SDLMain.m; sourceTree = SOURCE_ROOT; };
+		D3412F771698F91900F22FFA /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timer.cpp; path = Source/timer.cpp; sourceTree = SOURCE_ROOT; };
+		D3412F781698F91900F22FFA /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timer.h; path = Source/timer.h; sourceTree = SOURCE_ROOT; };
+		D3E88255168CBD69004C70BE /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
+		D3E8825A168CC586004C70BE /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
+		D3E8825C1694C3EA004C70BE /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = ../../../../../../../Library/Frameworks/SDL_ttf.framework; sourceTree = "<group>"; };
+		D3F70844168CAE3200F7C248 /* Kurve */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kurve; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3F70856168CAFC400F7C248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D3F70858168CAFEA00F7C248 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3F70841168CAE3200F7C248 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E8825D1694C3EA004C70BE /* SDL_ttf.framework in Frameworks */,
+				D3E8825B168CC586004C70BE /* SDL_image.framework in Frameworks */,
+				D3E88256168CBD69004C70BE /* SDL.framework in Frameworks */,
+				D3F70859168CAFEA00F7C248 /* Cocoa.framework in Frameworks */,
+				D3F70857168CAFC400F7C248 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D30FF746169590EF002A8C30 /* SDL */ = {
+			isa = PBXGroup;
+			children = (
+				D3412F751698F91900F22FFA /* SDLMain.h */,
+				D3412F761698F91900F22FFA /* SDLMain.m */,
+			);
+			name = SDL;
+			sourceTree = "<group>";
+		};
+		D30FF74716959114002A8C30 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				D3412F6E1698F91900F22FFA /* constants.h */,
+				D3412F6F1698F91900F22FFA /* functions.cpp */,
+				D3412F701698F91900F22FFA /* functions.h */,
+				D3412F711698F91900F22FFA /* globals.h */,
+				D3412F771698F91900F22FFA /* timer.cpp */,
+				D3412F781698F91900F22FFA /* timer.h */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
+		D3F70839168CAE3200F7C248 = {
+			isa = PBXGroup;
+			children = (
+				D3E8825C1694C3EA004C70BE /* SDL_ttf.framework */,
+				D3E8825A168CC586004C70BE /* SDL_image.framework */,
+				D3E88255168CBD69004C70BE /* SDL.framework */,
+				D3F70858168CAFEA00F7C248 /* Cocoa.framework */,
+				D3F70856168CAFC400F7C248 /* Foundation.framework */,
+				D3F70847168CAE3200F7C248 /* Kurve */,
+				D3F70845168CAE3200F7C248 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3F70845168CAE3200F7C248 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3F70844168CAE3200F7C248 /* Kurve */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3F70847168CAE3200F7C248 /* Kurve */ = {
+			isa = PBXGroup;
+			children = (
+				D30FF74716959114002A8C30 /* utility */,
+				D30FF746169590EF002A8C30 /* SDL */,
+				D3412F741698F91900F22FFA /* main.cpp */,
+				D3412F721698F91900F22FFA /* kurve.cpp */,
+				D3412F731698F91900F22FFA /* kurve.h */,
+			);
+			name = Kurve;
+			path = SDLTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3F70843168CAE3200F7C248 /* Kurve */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3F7084E168CAE3200F7C248 /* Build configuration list for PBXNativeTarget "Kurve" */;
+			buildPhases = (
+				D3F70840168CAE3200F7C248 /* Sources */,
+				D3F70841168CAE3200F7C248 /* Frameworks */,
+				D3F70842168CAE3200F7C248 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kurve;
+			productName = SDLTest;
+			productReference = D3F70844168CAE3200F7C248 /* Kurve */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3F7083B168CAE3200F7C248 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Ewan Hemingway";
+			};
+			buildConfigurationList = D3F7083E168CAE3200F7C248 /* Build configuration list for PBXProject "Kurve" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3F70839168CAE3200F7C248;
+			productRefGroup = D3F70845168CAE3200F7C248 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3F70843168CAE3200F7C248 /* Kurve */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3F70840168CAE3200F7C248 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3412F791698F91900F22FFA /* functions.cpp in Sources */,
+				D3412F7A1698F91900F22FFA /* kurve.cpp in Sources */,
+				D3412F7B1698F91900F22FFA /* main.cpp in Sources */,
+				D3412F7C1698F91900F22FFA /* SDLMain.m in Sources */,
+				D3412F7D1698F91900F22FFA /* timer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D3F7084C168CAE3200F7C248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D3F7084D168CAE3200F7C248 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D3F7084F168CAE3200F7C248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "/Library/Frameworks/**";
+				PRODUCT_NAME = Kurve;
+			};
+			name = Debug;
+		};
+		D3F70850168CAE3200F7C248 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "/Library/Frameworks/**";
+				PRODUCT_NAME = Kurve;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3F7083E168CAE3200F7C248 /* Build configuration list for PBXProject "Kurve" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3F7084C168CAE3200F7C248 /* Debug */,
+				D3F7084D168CAE3200F7C248 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3F7084E168CAE3200F7C248 /* Build configuration list for PBXNativeTarget "Kurve" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3F7084F168CAE3200F7C248 /* Debug */,
+				D3F70850168CAE3200F7C248 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3F7083B168CAE3200F7C248 /* Project object */;
+}

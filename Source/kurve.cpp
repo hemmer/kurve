@@ -18,7 +18,6 @@
 
 Kurve::Kurve(int left, int right, SDL_Color lineCol)
 {
-    
     speed = 2.0;
     
     leftKeycode = left;
@@ -52,11 +51,6 @@ void Kurve::handle_input()
         
         xVel = speed * cos(newAngle);
         yVel = speed * sin(newAngle);
-    }
-    
-    if (keystates[SDLK_r] && !alive)
-    {
-        restart();
     }
 }
 

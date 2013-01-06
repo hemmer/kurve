@@ -183,24 +183,32 @@ int main( int argc, char* args[] )
         
         // BACKGROUND: fill the screen white
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
-        // SIDEBAR: fill the sidebar with black
-        SDL_FillRect( screen, &sideBarArea, SDL_MapRGB( screen->format, 0, 0, 0 ) );
+        
         
         // PLAYAREA: draw the playing surface onto the screen
         apply_surface(playAreaGlobal.x, playAreaGlobal.y, playAreaSurface, screen);
         
         
-    
-        std::stringstream position;
-        //Convert the position time to a string
-        position << "x, y: " << myKurve[0].x << " " << myKurve[0].y;
-        message = TTF_RenderText_Solid( font10, position.str().c_str(), textColor );
-        if (message == NULL) return 1;
-    
+        // SIDEBAR: fill the sidebar with black
+        SDL_FillRect( screen, &sideBarArea, SDL_MapRGB( screen->format, 0, 0, 0 ) );
         
-        apply_surface(playAreaGlobal.x + playAreaGlobal.w + PADDING, PADDING, message, screen);
-    
+        // SIDEBAR: game logo
+        message = TTF_RenderText_Solid( font32, "KURVE", textColor );
+        apply_surface(sideBarArea.x + PADDING, sideBarArea.y + PADDING, message, screen);
         
+        // SIDEBAR: player scores
+        for (int k = 0; k < numPlayers; ++k)
+        {
+            std::stringstream scoreText;
+            scoreText << "Player " << k << ": won " << numWins[k];
+            message = TTF_RenderText_Solid( font20, scoreText.str().c_str(), textColor );
+            if (message == NULL) return 1;
+
+            apply_surface(sideBarArea.x + PADDING, sideBarArea.y + 8*PADDING + k*(PADDING + message->h), message, screen);
+
+        }
+        
+
         // update the screen
         if( SDL_Flip( screen ) == -1 ) return 1;
         
@@ -211,10 +219,7 @@ int main( int argc, char* args[] )
         }
         
     }
-    
-    for (int k = 0; k < numPlayers; ++k)
-        std::cout << "Player " << k << ": " << numWins[k] << std::endl;
-    
+
     
     // clean up resources
     clean_up();
